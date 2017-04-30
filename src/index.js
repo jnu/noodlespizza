@@ -1,16 +1,15 @@
-import { Route } from 'dreija/router';
-import React from 'react';
+import Routes from './Routes';
+import views from './views';
+import auth from './auth';
 
 
-const App = () => (
-    <div>
-        <p>Joe Pizza!</p>
-        <p>Todo: Write app.</p>
-    </div>
-);
-
-export default dreija => {
-    dreija.routes(
-        <Route path="/" component={ App } />
-    );
+export default (dreija, env) => {
+        dreija
+            .title(`Noodles' Pizza`)
+            .routes(Routes)
+            .views(views)
+            .auth(auth)
+            .dbname('noodlespizza')
+            .dbhost(env.DBHOST)
+            .redishost(env.REDISHOST);
 };
