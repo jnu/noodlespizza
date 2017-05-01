@@ -1,4 +1,4 @@
-joe.pizza
+noodles.pizza
 ===
 
-Pizza blog based on Dreija
+Digital pizza
