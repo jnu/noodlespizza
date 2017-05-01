@@ -4,7 +4,10 @@
   "description": "Noodle's Pizza",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-ip": "[ docker-machine ] && $(echo docker-machine ip) || localhost",
+    "start": "export NPM_DOCKER_HOST=$(npm run --silent docker-ip) && dreija --watch --app ./src/index.js --env DBHOST=\"$NPM_DOCKER_HOST\" --env REDISHOST=\"$NPM_DOCKER_HOST\" --secrets ./dev-secrets/secrets.json",
+    "build": "NODE_ENV=production dreija --app ./src/index.js --env DBHOST=\"db\" --env REDISHOST=\"redis\""
   },
   "author": "Joe Nudell",
   "license": "ISC",
