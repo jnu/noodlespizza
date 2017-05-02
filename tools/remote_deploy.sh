@@ -77,11 +77,13 @@ sudo docker pull nginx:1.13.0
 
 # Create & run new container. Mount nginx configs from host, and data volumes
 # from the pizza machine (so nginx can take on some serving duty if desired).
+# Note: assumes SSL has been setup through letsencrypt.
 sudo docker run -d \
                 -p 80:80 \
                 -p 443:443 \
                 --link pizza:pizza \
                 -v /home/ec2-user/nginx/noodlespizza.conf:/etc/nginx/conf.d/default.conf:ro \
                 -v /home/ec2-user/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
+                -v /etc/letsencrypt:/etc/ssl:ro \
                 --volumes-from pizza \
                 --name nginx nginx:1.13.0

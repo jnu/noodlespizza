@@ -99,10 +99,13 @@ script as necessary to use multiple nodes.
 ### Secrets
 
 To sync prod secrets, run the deploy script with the `--secrets` flag.
+This assumes you have the secrets on your local machine.
 
 ```
 # cd /path/to/noodlespizza
 ./tools/deploy.sh --secrets
 ```
 
-This assumes you have the secrets on your local machine.
+SSL is set up separately through `letsencrypt`. Follow those instructions and
+ensure that secrets are mounted correctly when the `nginx` container runs in the
+deploy script.
