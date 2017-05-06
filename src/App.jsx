@@ -1,9 +1,11 @@
 import React from 'react';
 
 
-export default () => (
+export default ({ children }) => (
     <div>
-        <p>Joe Pizza!</p>
-        <p>Todo: Write app.</p>
+        <p>Noodle's Pizza</p>
+        <div>
+            {children}
+        </div>
     </div>
 );
