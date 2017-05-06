@@ -1,11 +1,11 @@
 import React from 'react';
-import DoughCalc from './DoughCalc';
 
 
-export default () => (
+export default ({ children }) => (
     <div>
         <p>Noodle's Pizza</p>
-        <p>Dough calculator:</p>
-        <DoughCalc />
+        <div>
+            {children}
+        </div>
     </div>
 );
