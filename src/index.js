@@ -15,6 +15,18 @@ const googleAnalytics = `
   ga('create', 'UA-98374296-1', 'auto');
   ga('send', 'pageview');`;
 
+const globalStyles = `
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #212121;
+  color: #ffffff;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+`
+
 
 export default (dreija, env) => {
         dreija
@@ -26,4 +38,13 @@ export default (dreija, env) => {
             .dbhost(env.DBHOST)
             .redishost(env.REDISHOST)
             .injectScript(googleAnalytics, true);
+        dreija
+            .inject({
+              tag: 'style',
+              location: 'head',
+              attrs: {
+                type: 'text/css',
+              },
+              content: globalStyles,
+            });
 };

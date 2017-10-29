@@ -1,8 +1,8 @@
 
-const TYPE_FLOUR = 'flour';
-const TYPE_STARTER = 'starter';
-const TYPE_OTHER = 'other'
-const TYPE_WATER = 'water';
+export const TYPE_FLOUR = 'flour';
+export const TYPE_STARTER = 'starter';
+export const TYPE_OTHER = 'other'
+export const TYPE_WATER = 'water';
 
 const KNOWN_TYPES = new Set([
     TYPE_FLOUR,
@@ -17,6 +17,7 @@ export class Ingredient {
         this.name = name;
         this.type = this._inferType(type, name);
         this.percentage = percentage || 0.0;
+        this.hydration = hydration;
         this.waterContent = this._inferWaterContent(hydration, this.type);
         this.flourContent = this._inferFlourContent(this.waterContent, this.type);
     }

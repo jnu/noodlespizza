@@ -1,9 +1,13 @@
 import React from 'react';
 
 
+const mainStyle = {
+    width: '100%',
+    height: '100%',
+};
+
 export default ({ children }) => (
-    <div>
-        <p>Noodle's Pizza</p>
+    <div style={mainStyle}>
         <div>
             {children}
         </div>
