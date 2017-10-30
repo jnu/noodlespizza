@@ -322,23 +322,29 @@ export default class DoughCalc extends React.Component {
                     <div>
                         <label htmlFor="targetWeight">How much dough are you making? Figure about 275g for a 10in pie. Remember, the dough angels will take up to 50g from you while mixing!</label>
                     </div>
+                    <div style={{ textAlign: 'center' }}>
                     <input type="number"
                            name="targetWeight"
                            value={s.targetWeight}
                            onChange={v => this.handleNumberStateChange('targetWeight', v)} />(g)
+                    </div>
                 </div>
-                <table>
+                <table style={{
+                    width: '50%',
+                    position: 'relative',
+                    left: '15%',
+                }}>
                     <thead>
                         <tr>
-                            <th>Ingredient</th>
-                            <th>Weight (g)</th>
+                            <th style={{ textAlign: 'right' }}>Ingredient</th>
+                            <th style={{ textAlign: 'right' }}>Weight (g)</th>
                         </tr>
                     </thead>
                     <tbody>
                         {amounts.map((amount, i) =>
                             <tr key={`${i}-${amount.name}`}>
-                                <td>{amount.name}</td>
-                                <td>{Math.round(amount.weight)}</td>
+                                <td style={{ textAlign: 'right' }}>{amount.name}</td>
+                                <td style={{ textAlign: 'right' }}>{Math.round(amount.weight)}</td>
                             </tr>)}
                     </tbody>
                 </table>

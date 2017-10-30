@@ -3,16 +3,15 @@ import { Link } from 'react-router';
 import logo from './media/logo_bg.png';
 
 const logoStyle = {
-    height: '50%',
-    top: '25%',
-    left: '0%',
+    width: '750px',
+    top: 'calc(50% - 196px)',
+    left: 'calc(50% - 450px)',
     position: 'absolute',
 };
 
 const mainStyle = {
     bottom: '10%',
     textAlign: 'center',
-    width: '100%',
     position: 'absolute',
 }
 
