@@ -319,11 +319,13 @@ export default class DoughCalc extends React.Component {
                     </div>
                 <Title>Recipe</Title>
                 <div>
-                    <label htmlFor="targetWeight">How much dough are you making? (g)</label>
+                    <div>
+                        <label htmlFor="targetWeight">How much dough are you making? Figure about 275g for a 10in pie. Remember, the dough angels will take up to 50g from you while mixing!</label>
+                    </div>
                     <input type="number"
                            name="targetWeight"
                            value={s.targetWeight}
-                           onChange={v => this.handleNumberStateChange('targetWeight', v)} />
+                           onChange={v => this.handleNumberStateChange('targetWeight', v)} />(g)
                 </div>
                 <table>
                     <thead>
