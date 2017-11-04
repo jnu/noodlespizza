@@ -1,17 +1,17 @@
-FROM node:argon
+FROM node:8.9.0
 # TODO use alpine image. need to update to use apk instead of apt-get
 # FROM mhart/alpine-node:4.6
 MAINTAINER Joe Nudell <joenudell@gmail.com>
 
-# Set up yarn (npm replacement) debian package repo
-# RUN apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
-# RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
-# Set locale
+# Set up yarnpkg repo
 RUN apt-get update && \
-    # apt-get install yarn && \
     apt-get install -y --no-install-recommends apt-utils && \
+    apt-get install -y --no-install-recommends apt-transport-https && \
     apt-get install -y --no-install-recommends locales
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends yarn
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
@@ -19,13 +19,6 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
-
-
-# Set up yarn
-RUN mkdir -p /opt/yarn && \
-    cd /opt/yarn && \
-    wget https://yarnpkg.com/latest.tar.gz && \
-    tar zvxf latest.tar.gz
 
 
 
@@ -38,7 +31,7 @@ RUN chown -R www-data:www-data /var/www/noodlespizza
 WORKDIR /tmp/npm-cache
 COPY package.json package.json
 COPY yarn.lock yarn.lock
-RUN /opt/yarn/dist/bin/yarn install
+RUN yarn install
 
 
 # Copy built app
