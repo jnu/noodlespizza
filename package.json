@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker-ip": "[ docker-machine ] && $(echo docker-machine ip) || localhost",
-    "start": "export NPM_DOCKER_HOST=$(npm run --silent docker-ip) && dreija --watch --app ./src/index.js --env DBHOST=\"$NPM_DOCKER_HOST\" --env REDISHOST=\"$NPM_DOCKER_HOST\" --secrets ./dev-secrets/secrets.json",
-    "build": "NODE_ENV=production dreija --app ./src/index.js --env DBHOST=\"db\" --env REDISHOST=\"redis\""
+    "start": "export NPM_DOCKER_HOST=$(npm run --silent docker-ip) && dreija --watch --app ./src/index.js --api ./src/api/index.js --env DBHOST=\"$NPM_DOCKER_HOST\" --env REDISHOST=\"$NPM_DOCKER_HOST\" --secrets ./dev-secrets/secrets.json",
+    "build": "NODE_ENV=production dreija --app ./src/index.js --api ./src/api/index.js --env DBHOST=\"db\" --env REDISHOST=\"redis\""
   },
   "author": "Joe Nudell",
   "license": "ISC",
@@ -18,9 +18,10 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "d3": "^4.8.0",
-    "dreija": "^0.2.13",
+    "dreija": "0.3.3",
     "eslint": "^2.2.0",
     "eslint-plugin-react": "^4.2.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "3"
